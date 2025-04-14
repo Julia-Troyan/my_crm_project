@@ -67,8 +67,9 @@ body {
     font-size: 12px;
 }
 .avg-result {
-    text-shadow: 3px 3px 3px #ffffff;
-}
+    font-weight: bold;
+    transition: all 0.3s;
+  }
 .avg-result-red {
     color: red;
     text-shadow: 3px 3px 3px #ffffff;
@@ -81,7 +82,7 @@ body {
 
 .avg-result-green {
     color: green;
-    text-shadow: 3px 3px 3px #603566;
+    text-shadow: 3px 3px 3px #000000;
 }
 .box-tables__rows_btn {
     position: relative;

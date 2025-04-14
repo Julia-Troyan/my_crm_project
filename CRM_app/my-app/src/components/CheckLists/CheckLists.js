@@ -197,7 +197,9 @@ const CheckLists = () => {
                             <div className='company'>
                                 <h1 className="company__name">
                                     <span>{user.is_staff ? selectedCompanyName : ''}</span>
-                                    <span className="avg-result" style={{ color: avgResult < 65 ? "red" : avgResult < 75 ? "orange" : "green" }}>{avgResult}%</span>
+                                    <span className={`avg-result avg-result-${avgResult < 65 ? 'red' : avgResult < 75 ? 'orange' : 'green'}`}>
+                                        {avgResult}%
+                                    </span>
                                 </h1>
                             </div>
                         </div>
@@ -213,115 +215,115 @@ const CheckLists = () => {
                         </div>
                         <table className="box-tables__table">
                             <thead>
-                            <tr>
-                                <th className="box-tables__head">Дата проверки</th>
-                                <th className="box-tables__head">Контролёр</th>
-                                <th className="box-tables__head">Ф.И. оператора</th>
-                                <th className="box-tables__head">Дата и время обращения</th>
-                                <th className="box-tables__head">ID звонка/чата</th>
-                                {data.map((item) => (
-                                    <th key={item.id} className="box-tables__head">
-                                        {item.name}<br/>
-                                        <span className='worth'>{item.worth}</span>
-                                    </th>
-                                ))}
-                                <th className="box-tables__head">Оценка</th>
-                                {!isLettersCheck && <th className="box-tables__head">Линия</th>}
-                            </tr>
+                                <tr>
+                                    <th className="box-tables__head">Дата проверки</th>
+                                    <th className="box-tables__head">Контролёр</th>
+                                    <th className="box-tables__head">Ф.И. оператора</th>
+                                    <th className="box-tables__head">Дата и время обращения</th>
+                                    <th className="box-tables__head">ID звонка/чата</th>
+                                    {data.map((item) => (
+                                        <th key={item.id} className="box-tables__head">
+                                            {item.name}<br />
+                                            <span className='worth'>{item.worth}</span>
+                                        </th>
+                                    ))}
+                                    <th className="box-tables__head">Оценка</th>
+                                    {!isLettersCheck && <th className="box-tables__head">Линия</th>}
+                                </tr>
                             </thead>
                             <tbody>
-                            {checkList.length > 0 ? (
-                                checkList.map((item, index) => (
-                                    <tr key={index} className="every">
-                                        <td className="box-tab__rows">{formatDate(item.date) || "-"}</td>
-                                        <td className="box-tab__rows">{item.controller_full_name}</td>
-                                        <td className="box-tab__rows">{item.operator_name_full_name}</td>
-                                        <td className="box-tab__rows">
-                                            <span className="call-date">{formatDate(item.call_date)}</span><br/>
-                                            <span className="call-time">{item.call_time}</span>
-                                        </td>
-                                        <td className="box-tab__rows">{item.call_id}</td>
-                                        <td className="box-tab__rows">{item.first_miss_name}
-                                            <span className="zaebisy">{item.first_comm ? (
-                                                <div className="customTooltip">
-                                                    <button className="note">
-                                                        <InfoIcon/>
-                                                    </button>
-                                                    <span className="tooltipText">{item.first_comm}</span>
-                                                </div>
-                                            ) : ""}</span>
-                                        </td>
-                                        <td className="box-tables__rows">{item.second_miss_name}
-                                            <span className="zaebisy">
+                                {checkList.length > 0 ? (
+                                    checkList.map((item, index) => (
+                                        <tr key={index} className="every">
+                                            <td className="box-tab__rows">{formatDate(item.date) || "-"}</td>
+                                            <td className="box-tab__rows">{item.controller_full_name}</td>
+                                            <td className="box-tab__rows">{item.operator_name_full_name}</td>
+                                            <td className="box-tab__rows">
+                                                <span className="call-date">{formatDate(item.call_date)}</span><br />
+                                                <span className="call-time">{item.call_time}</span>
+                                            </td>
+                                            <td className="box-tab__rows">{item.call_id}</td>
+                                            <td className="box-tab__rows">{item.first_miss_name}
+                                                <span className="zaebisy">{item.first_comm ? (
+                                                    <div className="customTooltip">
+                                                        <button className="note">
+                                                            <InfoIcon />
+                                                        </button>
+                                                        <span className="tooltipText">{item.first_comm}</span>
+                                                    </div>
+                                                ) : ""}</span>
+                                            </td>
+                                            <td className="box-tables__rows">{item.second_miss_name}
+                                                <span className="zaebisy">
                                                     {item.second_comm ? (
                                                         <div className="customTooltip">
                                                             <button className="note">
-                                                                <InfoIcon/>
+                                                                <InfoIcon />
                                                             </button>
                                                             <span className="tooltipText">{item.second_comm}</span>
                                                         </div>
                                                     ) : ""}
                                                 </span>
-                                        </td>
-                                        <td className="box-tab__rows">{item.third_miss_name}
-                                            <span className="zaebisy">
+                                            </td>
+                                            <td className="box-tab__rows">{item.third_miss_name}
+                                                <span className="zaebisy">
                                                     {item.second_comm ? (
                                                         <div className="customTooltip">
                                                             <button className="note">
-                                                                <InfoIcon/>
+                                                                <InfoIcon />
                                                             </button>
                                                             <span className="tooltipText">{item.second_comm}</span>
                                                         </div>
                                                     ) : ""}
                                                 </span>
-                                        </td>
-                                        <td className="box-tab__rows">{item.forty_miss_name}
-                                            <span className="zaebisy">
+                                            </td>
+                                            <td className="box-tab__rows">{item.forty_miss_name}
+                                                <span className="zaebisy">
                                                     {item.forty_comm ? (
                                                         <div className="customTooltip">
                                                             <button className="note">
-                                                                <InfoIcon/>
+                                                                <InfoIcon />
                                                             </button>
                                                             <span className="tooltipText">{item.forty_comm}</span>
                                                         </div>
                                                     ) : ""}
                                                 </span>
-                                        </td>
-                                        <td className="box-tab__rows">{item.fifty_miss_name}
-                                            <span className="zaebisy">
+                                            </td>
+                                            <td className="box-tab__rows">{item.fifty_miss_name}
+                                                <span className="zaebisy">
                                                     {item.fifty_comm ? (
                                                         <div className="customTooltip">
                                                             <button className="note">
-                                                                <InfoIcon/>
+                                                                <InfoIcon />
                                                             </button>
                                                             <span className="tooltipText">{item.fifty_comm}</span>
                                                         </div>
                                                     ) : ""}
                                                 </span>
-                                        </td>
-                                        <td className="box-tab__rows">{item.sixty_miss_name}
-                                            <span className="zaebisy">
+                                            </td>
+                                            <td className="box-tab__rows">{item.sixty_miss_name}
+                                                <span className="zaebisy">
                                                     {item.sixty_comm ? (
                                                         <div className="customTooltip">
                                                             <button className="note">
-                                                                <InfoIcon/>
+                                                                <InfoIcon />
                                                             </button>
                                                             <span className="tooltipText">{item.sixty_comm}</span>
                                                         </div>
                                                     ) : ""}
                                                 </span>
+                                            </td>
+                                            <td className="box-tab__rows">{item.result}</td>
+                                            {!isLettersCheck && <td className="box-tab__rows">{item.line_name}</td>}
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan={isLettersCheck ? 12 : 13} className="td">
+                                            Нет данных для отображения
                                         </td>
-                                        <td className="box-tab__rows">{item.result}</td>
-                                        {!isLettersCheck && <td className="box-tab__rows">{item.line_name}</td>}
                                     </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan={isLettersCheck ? 12 : 13} className="td">
-                                        Нет данных для отображения
-                                    </td>
-                                </tr>
-                            )}
+                                )}
                             </tbody>
                         </table>
                     </div>
